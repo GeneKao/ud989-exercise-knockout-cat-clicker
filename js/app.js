@@ -1,7 +1,7 @@
 // for getting the data from google chrome console.
 // https://stackoverflow.com/questions/15310659/using-chrome-console-to-access-knockout-viewmodel-with-requirejs
 
-var ViewModel = function() {
+var Cat = function() {
     this.clickCount = ko.observable(0);
     this.name = ko.observable('Tabby');
     this.imgSrc = ko.observable('img/434164568_fea0ad4013_z.jpg');
@@ -28,8 +28,14 @@ var ViewModel = function() {
         return title;
     }, this);
 
+};
+
+var ViewModel = function() {
+
+    this.currentCat = ko.observable( new Cat() );
+
     this.incrementCounter = function() {
-        this.clickCount(this.clickCount() + 1);
+        this.currentCat().clickCount(this.currentCat().clickCount() + 1);
 
         var count = 0;
         count++;
